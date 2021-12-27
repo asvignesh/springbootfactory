@@ -34,7 +34,7 @@ public class ShapeFactory {
   @PostConstruct
   public void initMyServiceCache() {
     handlers.forEach(service -> {
-      RequestHandler annotation = service.getClass().getAnnotation(RequestHandler.class);
+      Shapes annotation = service.getClass().getAnnotation(Shapes.class);
       ShapesType[] commands = annotation.command();
       for (ShapesType command : commands) {
         myServiceCache.put(command, service);

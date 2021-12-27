@@ -8,7 +8,7 @@ import static in.asvignesh.springfactorypattern.ShapesType.SQUARE;
 /**
  * @author vignesh
  */
-@RequestHandler(command = SQUARE)
+@Shapes(command = SQUARE)
 @Service
 @Scope(value = "prototype")
 public class SquareImplementation implements Shape {

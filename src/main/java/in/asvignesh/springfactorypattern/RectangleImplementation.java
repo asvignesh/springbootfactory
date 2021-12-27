@@ -9,7 +9,7 @@ import static in.asvignesh.springfactorypattern.ShapesType.RECTANGLE;
  * @author vignesh
  */
 @Service
-@RequestHandler(command = RECTANGLE)
+@Shapes(command = RECTANGLE)
 @Scope(value = "prototype")
 public class RectangleImplementation implements Shape {
   @Override
