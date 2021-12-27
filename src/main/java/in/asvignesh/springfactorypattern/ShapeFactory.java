@@ -12,21 +12,21 @@ import java.util.Map;
  * @author vignesh
  */
 @Component
-public class Factory {
-  private static final Map<ApplicationCommands, Executor> myServiceCache = new HashMap<>();
+public class ShapeFactory {
+  private static final Map<ShapesType, Shape> myServiceCache = new HashMap<>();
 
-  private final List<Executor> handlers;
+  private final List<Shape> handlers;
 
   @Autowired
-  private Factory(List<Executor> handlers) {
+  private ShapeFactory(List<Shape> handlers) {
     this.handlers = handlers;
   }
 
-  public static Executor getService(ApplicationCommands applicationCommands) {
+  public static Shape getShapeImplementation(ShapesType shapesType) {
 
-    Executor service = myServiceCache.get(applicationCommands);
+    Shape service = myServiceCache.get(shapesType);
     if (null == service) {
-      throw new RuntimeException("Unknown service type: " + applicationCommands);
+      throw new RuntimeException("Unknown shape type: " + shapesType);
     }
     return FactoryUtil.getBean(service.getClass());
   }
@@ -35,8 +35,8 @@ public class Factory {
   public void initMyServiceCache() {
     handlers.forEach(service -> {
       RequestHandler annotation = service.getClass().getAnnotation(RequestHandler.class);
-      ApplicationCommands[] commands = annotation.command();
-      for (ApplicationCommands command : commands) {
+      ShapesType[] commands = annotation.command();
+      for (ShapesType command : commands) {
         myServiceCache.put(command, service);
       }
     });

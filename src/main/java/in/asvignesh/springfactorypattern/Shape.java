@@ -3,6 +3,6 @@ package in.asvignesh.springfactorypattern;
 /**
  * @author vignesh
  */
-public interface Executor {
-  String execute();
+public interface Shape {
+  String draw();
 }

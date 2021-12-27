@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SampleController {
 
-  final Factory factory;
+  final ShapeFactory factory;
 
-  public SampleController(Factory factory) {
+  public SampleController(ShapeFactory factory) {
     this.factory = factory;
   }
 
   @GetMapping("/test")
   String all() {
-    Executor service = Factory.getService(ApplicationCommands.CLASS1);
-    return service.execute();
+    Shape service = ShapeFactory.getShapeImplementation(ShapesType.SQUARE);
+    return service.draw();
   }
 }

@@ -3,17 +3,17 @@ package in.asvignesh.springfactorypattern;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import static in.asvignesh.springfactorypattern.ApplicationCommands.CLASS1;
+import static in.asvignesh.springfactorypattern.ShapesType.SQUARE;
 
 /**
  * @author vignesh
  */
-@RequestHandler(command = CLASS1)
+@RequestHandler(command = SQUARE)
 @Service
 @Scope(value = "prototype")
-public class Class1 implements Executor {
+public class SquareImplementation implements Shape {
   @Override
-  public String execute() {
+  public String draw() {
     return Integer.toHexString(System.identityHashCode(this));
   }
 }
